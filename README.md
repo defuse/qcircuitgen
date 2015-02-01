@@ -36,44 +36,44 @@ Here is circuit.txt:
 Calling `ruby qcircuitgen.rb circuit.txt` outputs:
 
     \setlength{\unitlength}{.2in}
-    \begin{picture}(30.0, 9)(0, 0)
-    \put(0.0, 8.0){\usebox{\gatesep}}
-    \put(0.0, 5.75){\usebox{\gatesep}}
-    \put(0.0, 3.5){\usebox{\gatesep}}
-    \put(1.5, 8.0){\usebox{\hgate}}
-    \put(3.0, 8.0){\usebox{\gatesep}}
-    \put(1.5, 5.75){\usebox{\gateunder}}
-    \put(3.0, 5.75){\usebox{\gatesep}}
-    \put(1.5, 3.5){\usebox{\gateunder}}
-    \put(3.0, 3.5){\usebox{\gatesep}}
-    \put(4.5, 8.0){\usebox{\zgate}}
-    \put(6.0, 8.0){\usebox{\gatesep}}
-    \put(4.5, 5.75){\usebox{\gateunder}}
-    \put(6.0, 5.75){\usebox{\gatesep}}
-    \put(4.5, 3.5){\usebox{\gateunder}}
-    \put(6.0, 3.5){\usebox{\gatesep}}
-    \put(7.5, 8.0){\usebox{\hgate}}
-    \put(9.0, 8.0){\usebox{\gatesep}}
-    \put(7.5, 5.75){\usebox{\hgate}}
-    \put(9.0, 5.75){\usebox{\gatesep}}
-    \put(7.5, 3.5){\usebox{\gateunder}}
-    \put(9.0, 3.5){\usebox{\gatesep}}
-    \put(12.0, 8.0){\usebox{\gatesep}}
-    \put(10.5, 5.75){\usebox{\cnotB}}
-    \put(12.0, 5.75){\usebox{\gatesep}}
-    \put(10.5, 3.5){\usebox{\gateunder}}
-    \put(12.0, 3.5){\usebox{\gatesep}}
-    \put(13.5, 8.0){\usebox{\gateunder}}
-    \put(15.0, 8.0){\usebox{\gatesep}}
-    \put(15.0, 5.75){\usebox{\gatesep}}
-    \put(13.5, 3.5){\usebox{\cnotA}}
-    \put(15.0, 3.5){\usebox{\gatesep}}
-    \put(16.5, 8.0){\usebox{\zgate}}
-    \put(18.0, 8.0){\usebox{\gatesep}}
-    \put(16.5, 5.75){\usebox{\zgate}}
-    \put(18.0, 5.75){\usebox{\gatesep}}
-    \put(16.5, 3.5){\usebox{\gateunder}}
-    \put(18.0, 3.5){\usebox{\gatesep}}
+    \begin{picture}(19.5, 8.25)(0, 0)
+    \put(0.0, 7.5){\usebox{\gatesep}}
+    \put(0.0, 5.25){\usebox{\gatesep}}
+    \put(0.0, 3.0){\usebox{\gatesep}}
+    \put(1.5, 7.5){\usebox{\hgate}}
+    \put(3.0, 7.5){\usebox{\gatesep}}
+    \put(1.5, 5.25){\usebox{\gateunder}}
+    \put(3.0, 5.25){\usebox{\gatesep}}
+    \put(1.5, 3.0){\usebox{\gateunder}}
+    \put(3.0, 3.0){\usebox{\gatesep}}
+    \put(4.5, 7.5){\usebox{\zgate}}
+    \put(6.0, 7.5){\usebox{\gatesep}}
+    \put(4.5, 5.25){\usebox{\gateunder}}
+    \put(6.0, 5.25){\usebox{\gatesep}}
+    \put(4.5, 3.0){\usebox{\gateunder}}
+    \put(6.0, 3.0){\usebox{\gatesep}}
+    \put(7.5, 7.5){\usebox{\hgate}}
+    \put(9.0, 7.5){\usebox{\gatesep}}
+    \put(7.5, 5.25){\usebox{\hgate}}
+    \put(9.0, 5.25){\usebox{\gatesep}}
+    \put(7.5, 3.0){\usebox{\gateunder}}
+    \put(9.0, 3.0){\usebox{\gatesep}}
+    \put(12.0, 7.5){\usebox{\gatesep}}
+    \put(10.5, 5.25){\usebox{\cnotB}}
+    \put(12.0, 5.25){\usebox{\gatesep}}
+    \put(10.5, 3.0){\usebox{\gateunder}}
+    \put(12.0, 3.0){\usebox{\gatesep}}
+    \put(13.5, 7.5){\usebox{\gateunder}}
+    \put(15.0, 7.5){\usebox{\gatesep}}
+    \put(15.0, 5.25){\usebox{\gatesep}}
+    \put(13.5, 3.0){\usebox{\cnotA}}
+    \put(15.0, 3.0){\usebox{\gatesep}}
+    \put(16.5, 7.5){\usebox{\zgate}}
+    \put(18.0, 7.5){\usebox{\gatesep}}
+    \put(16.5, 5.25){\usebox{\zgate}}
+    \put(18.0, 5.25){\usebox{\gatesep}}
+    \put(16.5, 3.0){\usebox{\gateunder}}
+    \put(18.0, 3.0){\usebox{\gatesep}}
     \end{picture}
 
 Once rendered, this looks like:

@@ -48,10 +48,10 @@ QUBIT_COUNT = qubits.length
 GATE_COUNT = qubits[0].length
 
 puts "\\setlength{\\unitlength}{.2in}"
-puts "\\begin{picture}(#{4.5*GATE_COUNT + 3}, #{QUBIT_COUNT*3})(0, 0)"
+puts "\\begin{picture}(#{3*GATE_COUNT + 1.5}, #{1.5 + QUBIT_COUNT*2.25})(0, 0)"
 
 def qubitpos(qubit)
-  return QUBIT_COUNT*3 - 1 - 2.25*qubit
+  return (1.5 + QUBIT_COUNT*2.25) - 1.5/2 - 2.25*qubit
 end
 
 x_pos = 0.0
