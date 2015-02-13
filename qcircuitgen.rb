@@ -19,10 +19,29 @@
 
 if ARGV.length != 1
   puts "Usage: ruby qcircuitgen.rb <circuit file>"
-  puts "    One qubit per line. Gates Z, X, H, and I (identity)."
-  puts "    CNOTs specified on bottom qubit, with line going up."
-  puts "    C for control on the bottom. F for control on the top."
-  puts "    On the other side of the CNOT, you must put a B (blank)."
+  puts "    One qubit per line. Single-qubit gates: Z, X, H, and I (identity)."
+  puts "    To specify a control line going up, use U or P (mnemonic: 'UP')"
+  puts "        U leaves room for a gate above. P intersects the line above."
+  puts "    To specify a control line going down, use D or N (mnemonic: 'DowN')"
+  puts "        D leaves room for a gate below, N intersects the line below."
+  puts "    For the XOR part of the CNOT, use an O."
+  puts "        So a Toffoli gate (doubly-controlled CNOT) going down looks like:"
+  puts "            N"
+  puts "            N"
+  puts "            O"
+  puts "        And a controlled-H going up looks like:"
+  puts "            H"
+  puts "            U"
+  puts "    For a not-touching line cross-over, use L for up, V for down."
+  puts "        So a CNOT with qubit 1 controlling and qubit 3 controlled is:"
+  puts "            N"
+  puts "            L"
+  puts "            O"
+  puts "    For swap gates, make the bottom one W and the top one S:"
+  puts "        So swaping the first qubit with the third is:"
+  puts "            S"
+  puts "            L"
+  puts "            W"
   exit(false)
 end
 
@@ -64,20 +83,52 @@ x_pos += 1.5
   0.upto(QUBIT_COUNT - 1) do |qubit|
     # Draw the gate
     case qubits[qubit][gate]
+
+    # Identity -- straight line through.
+    when "I"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\identitygate}}"
+
+    # Boxed gates.
     when "H"
       puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\hgate}}"
     when "Z"
       puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\zgate}}"
     when "X"
       puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\xgate}}"
-    when "C"
-      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\cnotB}}"
-    when "F"
-      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\cnotA}}"
-    when "B"
-      # Ignore, a CNOT is being drawn beneath us. Leave it blank.
-    when "I"
-      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\gateunder}}"
+
+    # Overlapping (non-control) lines.
+    when "L" # Up
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\identitygate}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\touchlineup}}"
+    when "V" # Down
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\identitygate}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit) - 2.25}){\\usebox{\\touchlineup}}"
+
+    # Lines starting with a control.
+    when "U" # Up (leave room for a gate)
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\controldot}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\touchlineupgate}}"
+    when "P" # Up (touch the line)
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\controldot}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\touchlineup}}"
+    when "D" # Down (leave room for a gate)
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\controldot}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit) - 2.25 + 0.75}){\\usebox{\\touchlineupgate}}"
+    when "N" # Down (touch the line)
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\controldot}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit) - 2.25}){\\usebox{\\touchlineup}}"
+
+    # XOR symbol
+    when "O"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\xorsymbol}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\xorsymbolfixer}}"
+
+    # Swap gate
+    when "S" # Top of the swap
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\swapsymbol}}"
+    when "W" # Bottom of the swap
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\swapsymbol}}"
+      puts "\\put(#{x_pos}, #{qubitpos(qubit)}){\\usebox{\\touchlineup}}"
     end
 
     # Draw the line following the gate

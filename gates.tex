@@ -27,53 +27,44 @@
     \put(0, 0){\line(1, 0){1.5}}
 }
 
-\newsavebox{\gateunder}
-\savebox{\gateunder}(3, 0)[bl]{
+\newsavebox{\identitygate}
+\savebox{\identitygate}(3, 0)[bl]{
     \put(0, 0){\line(1, 0){1.5}}
 }
 
-\newsavebox{\cnotgateA}
-\savebox{\cnotgateA}(1.5, 3.5)[bl]{
+\newsavebox{\touchlineup}
+\savebox{\touchlineup}(1.5, 3.5)[bl]{
     % Vertical line
-    \put(0.75, 2.25){\line(0, -1){2.25}}
-
-    % XOR bit
-    \put(0.75, 0){\circle{.7}}
-    % Control bit
-    \put(0.75, 2.25){\circle*{.4}}
-
-
-    %% Circuit line (completes the XOR)
-    \put(0, 0){\line(1, 0){1.5}}
-
-    %% Circuit line (through the solid dot)
-    \put(0, 2.25){\line(1, 0){1.5}}
+    \put(0.75, 0){\line(0, 1){2.25}}
 }
-\newsavebox{\cnotgateAfixer}
-\savebox{\cnotgateAfixer}(1.5, 0.7)[tl]{
-    % Finish the XOR symbol
+
+\newsavebox{\touchlineupgate}
+\savebox{\touchlineupgate}(1.5, 3.5)[bl]{
+    % Vertical line
+    \put(0.75, 0){\line(0, 1){1.5}}
+}
+
+\newsavebox{\controldot}
+\savebox{\controldot}(1.5, 1.5)[bl]{
+    \put(0, 0){\usebox{\identitygate}}
+    \put(0.75, 0){\circle*{.4}}
+}
+
+\newsavebox{\xorsymbol}
+\savebox{\xorsymbol}(1.5, 1.5)[bl]{
+    \put(0, 0){\usebox{\identitygate}}
+    \put(0.75, 0){\circle{.7}}
+    \put(0.75, 0){\line(0, 1){0.35}}
+}
+
+\newsavebox{\xorsymbolfixer}
+\savebox{\xorsymbolfixer}(1.5, 0.7)[tl]{
     \put(0.75, -0.70){\line(0, -1){0.35}}
 }
 
-\newsavebox{\cnotB}
-\savebox{\cnotB}(1.5, 3.5)[bl]{
-    % Vertical line
-    \put(0.75, 2.6){\line(0, -1){2.6}}
-
-    % XOR bit
-    \put(0.75, 2.25){\circle{.7}}
-    % Control bit
-    \put(0.75, 0){\circle*{.4}}
-
-    %% Circuit line (completes the XOR)
-    \put(0, 0){\line(1, 0){1.5}}
-
-    %% Circuit line (through the solid dot)
-    \put(0, 2.25){\line(1, 0){1.5}}
-}
-
-\newsavebox{\cnotA}
-\savebox{\cnotA}(1.5, 3.5)[bl]{
-    \put(0, 0){\usebox{\cnotgateA}}
-    \put(0, 0){\usebox{\cnotgateAfixer}}
+\newsavebox{\swapsymbol}
+\savebox{\swapsymbol}(1.5, 1.5)[bl]{
+    % Cheat and use \times instead of drawing a thick X
+    \put(0.75, 0){\makebox(0, 0){$\times$}}
+    \put(0, 0){\usebox{\identitygate}}
 }
